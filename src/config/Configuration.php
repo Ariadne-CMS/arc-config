@@ -11,7 +11,7 @@
 
 	namespace arc\config;
 
-	class Configuration implements ConfigurationInterface, \arc\KeyValueStoreInterface {
+	class Configuration implements ConfigurationInterface {
 		use \arc\traits\Proxy {
 			\arc\traits\Proxy::__construct as private ProxyConstruct;
 		}	
