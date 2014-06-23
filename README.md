@@ -8,6 +8,6 @@ The Ariadne Component Library is a spinoff from the Ariadne Web
 Application Framework and Content Management System 
 [ http://www.ariadne-cms.org/ ]
 
-arc/cache contains
+arc/config contains
 ------------------
-- cache: a generic cache class and caching proxy object.
+- config: a generic config class.
