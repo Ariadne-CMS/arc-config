@@ -9,7 +9,7 @@
 	 * file that was distributed with this source code.
 	 */
 
-	namespace arc\config;
+namespace arc\config;
 
 	class Configuration implements ConfigurationInterface {
 		use \arc\traits\Proxy {
