@@ -16,30 +16,35 @@ namespace arc;
  * @requires \arc\tree
  * @requires \arc\context
 */
-class config {
+class config
+{
+    public static function getConfiguration()
+    {
+        $context = \arc\context::$context;
+        if (!$context->arcConfig) {
+            $context->arcConfig = new config\Configuration( \arc\tree::expand()->cd( $context->arcPath ) );
+        }
 
-	public static function getConfiguration() {
-		$context = \arc\context::$context;
-		if ( !$context->arcConfig ) {
-			$context->arcConfig = new config\Configuration( \arc\tree::expand()->cd( $context->arcPath ) );
-		}
-		return $context->arcConfig;
-	}
+        return $context->arcConfig;
+    }
 
-	public static function acquire( $name, $path = null, $root = '/' ) {
-		return self::getConfiguration()->acquire( $name, $path, $root );
-	}
+    public static function acquire($name, $path = null, $root = '/')
+    {
+        return self::getConfiguration()->acquire( $name, $path, $root );
+    }
 
-	public static function configure( $name, $value ) {
-		return self::getConfiguration()->configure( $name, $value );
-	}
+    public static function configure($name, $value)
+    {
+        return self::getConfiguration()->configure( $name, $value );
+    }
 
-	public static function cd( $path ) {
-		return self::getConfiguration()->cd( $path );
-	}
+    public static function cd($path)
+    {
+        return self::getConfiguration()->cd( $path );
+    }
 
-	public static function root( $root ) {
-		return self::getConfiguration()->root( $root );
-	}
+    public static function root($root)
+    {
+        return self::getConfiguration()->root( $root );
+    }
 }
-
