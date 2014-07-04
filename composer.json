@@ -1,7 +1,7 @@
 {
 	"name": "arc/config",
 	"type": "library",
-	"description": "Ariadne Component Library: Cache Component",
+	"description": "Ariadne Component Library: hierarchical configuration management Component",
 	"keywords": ["component","components"],
 	"homepage": "https://github.com/Ariadne-CMS/arc/wiki",
 	"license": "MIT",
