@@ -11,7 +11,7 @@
 
     require_once( __DIR__ . DIRECTORY_SEPARATOR . 'bootstrap.php' );
 
-    class TestConfig extends UnitTestCase
+    class TestConfig extends PHPUnit_Framework_TestCase
     {
         function testContextLessConfigureAcquire()
         {
