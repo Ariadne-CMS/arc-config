@@ -27,7 +27,7 @@ class Configuration implements ConfigurationInterface
 
     public function acquire($name)
     {
-        return \arc\tree::Dive(
+        return \arc\tree::dive(
             $this->tree,
             function ($node) use ($name) {
                 return $this->getValueIfRoot( $name, $node->nodeValue );
