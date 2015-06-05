@@ -1,4 +1,4 @@
-ARC: Config
+\arc\config
 ===========
 
 ARC\Config allows you to set values in a tree structure that 'trickle down'. This means that if you set 'color' to 'blue' in a parent node, every child node can get the configured value for 'color' and it will return 'blue'. Unless another node in between has redefined the value.
@@ -17,6 +17,15 @@ And:
 		$color = \arc\config::cd('/parent/child/')->acquire('color');
 		// => 'red'
 
+If a configured value is a hash, you can get 'nested' values like this:
+
+	<?php
+		\arc\config::configure('colors', [
+			'text' => '#666',
+			'link' => '#CC0000',
+			'brand' => '#FF6666'
+		]);
+		$linkColor = \arc\config::acquire('colors.link');
 
 ARC\Config has the semantics of ARC\Tree, so you can use all the ARC tree methods on it, like: \arc\tree::collapse, \arc\tree::expand, \arc\tree::parents, \arc\tree::dive, etc.
 
@@ -53,3 +62,20 @@ The calls to \arc\context are there to allow you to keep using the static \arc\c
 
 The class \arc\config\Configuration has a single dependency in the constructor, it needs an object that functionally implements the \arc\tree\NamedNode class. It may ducktype it, there is no type check.
 
+\arc\config::acquire
+--------------------
+	(mixed) \arc\config::acquire( (string) $index )
+
+This returns the nearest value stored with the name $index. This name may contain '.' characters to search nested hashes. The value returned will be from the closest parent that has a value for this name.
+
+\arc\config::configure
+----------------------
+	(this) \arc\config::configure( (string) $name, (mixed) $value )
+
+Set a configuration value for the current path. Returns itself. 
+
+\arc\config::cd
+---------------
+	(this) \arc\config::cd( (string) $path )
+
+Change the current path. Returns itself. The new path doesn't have to exist, it will automatically be created when calling configure().
